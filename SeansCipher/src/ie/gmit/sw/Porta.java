@@ -5,6 +5,7 @@ public class Porta {
 	 {
 		String plain_u=plain.toUpperCase();
 		StringBuilder sb=new StringBuilder();
+		
 		for(int i=0;i<plain_u.length();i+=key.length())
 		{
 			int end=i+key.length()>plain_u.length()?plain_u.length():i+key.length();
@@ -12,6 +13,7 @@ public class Porta {
 		}	
 		return sb.toString();
 	 }
+	
 	
 	private String get_sub_ct(String plain,int start,int end,String key)
 	{
