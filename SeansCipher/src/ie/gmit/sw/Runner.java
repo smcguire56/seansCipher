@@ -5,14 +5,11 @@ import java.util.Scanner;
 public class Runner {
 	private static Scanner console = new Scanner(System.in);
 	private static FileParser fp = new FileParser();
-	private static URLParser up = new URLParser();
+	//private static URLParser up = new URLParser();
 	
 	public static void main(String[] args) {
 
 		int option;
-		
-
-
 		menu();
 		option = console.nextInt();
 
@@ -34,10 +31,7 @@ public class Runner {
 			
 			menu();
 			option = console.nextInt();
-		}
-		
-
-		
+		}	
 		console.close();
 	}
 
@@ -49,8 +43,22 @@ public class Runner {
 		System.out.println("FILE YAH");	
 
 		fp.parse();
+		fp.printAll();
+		String fileKey = null;
+		String file = null;
 		
 		
+		
+		System.out.println("Please Enter Key to Encrypt with: ");
+		fileKey = console.next();
+		
+		file = fp.filetoString();
+		Porta f = new Porta();
+		
+		System.out.println(file+ " and: " + fileKey);
+		
+		System.out.println("C: " +f.encode(file, fileKey));
+
 	}
 
 	private static void encryptText() {
