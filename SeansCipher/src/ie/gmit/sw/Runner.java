@@ -1,18 +1,28 @@
 package ie.gmit.sw;
 
+import java.util.InputMismatchException;
 import java.util.Scanner;
-
+/*
+ * Porta Cipher uses a polyalphabetic  substitution cipher. It uses uses 13 alphabets, 
+ * and which are reciprocal, thus enciphering becomes the same as deciphering.
+ */
 public class Runner {
 	private static Scanner console = new Scanner(System.in);
 	private static FileParser fp = new FileParser();
 	//private static URLParser up = new URLParser();
 	
 	public static void main(String[] args) {
+		int option = 0;
 
-		int option;
-		menu();
-		option = console.nextInt();
-
+		
+        try{
+    		menu();
+    		option = console.nextInt();
+        }catch (InputMismatchException ex) {
+        	System.out.println("incorrect");
+        	
+        }
+        
 		while(option != -1)
 		{
 			switch (option) {
@@ -58,6 +68,13 @@ public class Runner {
 		System.out.println(file+ " and: " + fileKey);
 		
 		System.out.println("C: " +f.encode(file, fileKey));
+		
+		System.out.println("--Decrypt--");
+		
+		Porta f2 = new Porta();
+
+		f2.encode(file, fileKey);
+		System.out.println("C: " +f2.encode(file, fileKey));
 
 	}
 
@@ -73,10 +90,12 @@ public class Runner {
 		System.out.println("Enter the text");
 		text = console.next();
 		System.out.println("K: "+ key +"\nP: "+ text);
-
 		System.out.println("C: " +b.encode(text, key));
 		
 		System.out.println("--Decrypt--");
+		
+		b.encode(text, key);
+		System.out.println("C: " +b.encode(text, key));
 		
 		
 		Porta c = new Porta();
@@ -86,7 +105,7 @@ public class Runner {
 		
 		System.out.println("Enter the Key");
 		key2 = console.next();
-		
+
 		System.out.println("Enter the cipher text");
 		text2 = console.next();
 		

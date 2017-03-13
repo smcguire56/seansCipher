@@ -50,7 +50,6 @@ public class FileParser {
 			br.close();
 		}
 		catch(IOException e){
-			e.printStackTrace();
 		}
 	}	//parse
 
